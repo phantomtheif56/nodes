@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Linked List with Arrows</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #0f172a;
+        color: white;
+        text-align: center;
+        padding: 30px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background: #22c55e;
+        border: none;
+        border-radius: 6px;
+        color: black;
+        margin-bottom: 20px;
+    }
+
+    .list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .node {
+        display: flex;
+        width: 120px;
+        height: 60px;
+        border: 2px solid white;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    .data {
+        flex: 2;
+        background: #1e293b;
+    }
+
+    .next {
+        flex: 1;
+        background: red;
+    }
+
+    .next.green {
+        background: #22c55e;
+    }
+
+    .arrow {
+        font-size: 32px;
+        margin: 0 5px;
+        color: #22c55e;
+    }
+</style>
+</head>
+
+<body>
+
+<h2>Linked List Visualization</h2>
+
+<button onclick="addNode()">Add New Node</button>
+
+<div class="list" id="list"></div>
+
+<script>
+    const list = document.getElementById("list");
+
+    function addNode() {
+        const nodes = document.querySelectorAll(".node");
+        const arrows = document.querySelectorAll(".arrow");
+
+        // Update previous node
+        if (nodes.length > 0) {
+            nodes[nodes.length - 1]
+                .querySelector(".next")
+                .classList.add("green");
+
+            // Add arrow after previous node
+            const arrow = document.createElement("div");
+            arrow.className = "arrow";
+            arrow.innerHTML = "&#8594;"; // →
+            list.appendChild(arrow);
+        }
+
+        // Create new node
+        const node = document.createElement("div");
+        node.className = "node";
+
+        node.innerHTML = `
+            <div class="data"></div>
+            <div class="next"></div>
+        `;
+
+        list.appendChild(node);
+    }
+</script>
+
+</body>
+</html>
