@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Linked List with Arrows</title>
+<title>Linked List with Data Input</title>
 
 <style>
     body {
@@ -34,7 +34,7 @@
 
     .node {
         display: flex;
-        width: 120px;
+        width: 150px;
         height: 60px;
         border: 2px solid white;
         border-radius: 6px;
@@ -44,6 +44,19 @@
     .data {
         flex: 2;
         background: #1e293b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .data input {
+        width: 90%;
+        height: 30px;
+        border: none;
+        outline: none;
+        text-align: center;
+        border-radius: 4px;
+        font-size: 14px;
     }
 
     .next {
@@ -57,7 +70,6 @@
 
     .arrow {
         font-size: 32px;
-        margin: 0 5px;
         color: #22c55e;
     }
 </style>
@@ -65,7 +77,7 @@
 
 <body>
 
-<h2>Linked List Visualization</h2>
+<h2>Linked List Visualization (With Data)</h2>
 
 <button onclick="addNode()">Add New Node</button>
 
@@ -76,7 +88,6 @@
 
     function addNode() {
         const nodes = document.querySelectorAll(".node");
-        const arrows = document.querySelectorAll(".arrow");
 
         // Update previous node
         if (nodes.length > 0) {
@@ -84,10 +95,10 @@
                 .querySelector(".next")
                 .classList.add("green");
 
-            // Add arrow after previous node
+            // Add arrow
             const arrow = document.createElement("div");
             arrow.className = "arrow";
-            arrow.innerHTML = "&#8594;"; // →
+            arrow.innerHTML = "→";
             list.appendChild(arrow);
         }
 
@@ -96,7 +107,9 @@
         node.className = "node";
 
         node.innerHTML = `
-            <div class="data"></div>
+            <div class="data">
+                <input type="text" placeholder="Data">
+            </div>
             <div class="next"></div>
         `;
 
